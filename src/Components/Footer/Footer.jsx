@@ -6,10 +6,10 @@ const Footer = () => {
       <p>Created by Mire</p>
       <AncoreWrp>
         <a href="https://github.com/mireia22">
-          <img src="/src/assets/Icons/github.png" alt="github" />
+          <img src="/github.png" alt="github" />
         </a>
         <a href="https://www.linkedin.com/in/mireia-garcia-ferrer-40381b255/">
-          <img src="/src/assets/Icons/linkedin.png" alt="linkedin" />
+          <img src="/linkedin.png" alt="linkedin" />
         </a>
       </AncoreWrp>
     </FooterWrp>
