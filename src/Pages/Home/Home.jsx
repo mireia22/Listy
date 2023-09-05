@@ -8,8 +8,7 @@ import { useShoppingList } from "../../Components/Context/ShoppingListContext";
 const Home = () => {
   const navigate = useNavigate();
   const [listTitle, setListTitle] = useState("");
-  const [savedLists, setSavedLists] = useState([]);
-  const { setShopList } = useShoppingList();
+  const { setShopList, storedLists, createList } = useShoppingList();
 
   useEffect(() => {
     const savedListTitle = localStorage.getItem("listTitle");
@@ -19,10 +18,14 @@ const Home = () => {
   }, []);
 
   const goToSingleListCreator = () => {
-    setShopList([]);
-    navigate("/shopping-list");
+    const confirmDelete = window.confirm(
+      "You're gonna delete your previous list and all its items"
+    );
+    if (confirmDelete) {
+      setShopList([]);
+      navigate("/shopping-list");
+    }
   };
-
   return (
     <HomeWrp>
       <p>Create a new List:</p>

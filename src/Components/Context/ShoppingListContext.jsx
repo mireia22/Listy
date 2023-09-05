@@ -7,7 +7,6 @@ export const useShoppingList = () => {
 };
 
 export const ShoppingListProvider = ({ children }) => {
-  const [savedLists, setSavedLists] = useState([{ title: "", list: [] }]);
   const [shopList, setShopList] = useState([]);
   const [itemToShop, setItemToShop] = useState("");
   const [open, setOpen] = useState(false);

@@ -4,7 +4,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 
   > p {
     font-weight: bold;
@@ -13,7 +13,7 @@ export const Form = styled.form`
   }
   > input {
     border: none;
-    padding: 0.3rem;
+    padding: 0.4rem;
     border: 2px solid #e77e23;
     border-radius: 5px;
   }

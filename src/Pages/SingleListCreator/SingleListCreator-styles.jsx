@@ -4,11 +4,14 @@ export const SingleListCreatorWrp = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 
   > input {
     min-width: 15rem;
     border: 2px solid var(--border);
     border-radius: 5px;
+    padding: 0.3rem;
   }
 `;
 
