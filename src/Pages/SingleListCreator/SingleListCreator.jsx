@@ -38,6 +38,20 @@ const SingleListCreator = () => {
       }
     }
   }, [listTitle, savedLists, setShopList]);
+  ç;
+
+  const handleAddItem = () => {
+    if (itemToShop.trim() !== "") {
+      addItem(itemToShop);
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleAddItem();
+    }
+  };
 
   return (
     <>
@@ -47,6 +61,7 @@ const SingleListCreator = () => {
           type="text"
           value={itemToShop}
           onChange={(e) => handleItemChange(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <Button variant="add" onClick={() => addItem(itemToShop)}>
           Add
