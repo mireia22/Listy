@@ -21,6 +21,12 @@ const App = () => {
   const showReturnButton = location.pathname !== "/";
 
   const returnToHome = () => {
+    const confirmReturn = window.confirm(
+      "Returning to the home page will not save the list. Do you want to continue?"
+    );
+    if (!confirmReturn) {
+      return;
+    }
     navigate("/");
   };
 
