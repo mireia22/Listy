@@ -20,12 +20,13 @@ export const NavContent = styled.div`
   width: 20rem;
   box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-
+  gap: 1rem;
   background-color: ${({ backgroundColor }) => backgroundColor || "inherit"};
 
   > a {
     > h4 {
       color: var(--primary);
+      text-align: center;
     }
   }
 `;
