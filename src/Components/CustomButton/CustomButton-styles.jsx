@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const Button = styled.button`
   border: none;
+  cursor: pointer;
   padding: ${({ variant }) =>
     variant === "counter" ? "0.25rem 0.5rem" : "0.4rem"};
   border-radius: ${({ variant }) => (variant === "counter" ? "100%" : "5px")};
@@ -11,16 +12,17 @@ export const Button = styled.button`
     variant === "counter"
       ? "#ffa600"
       : variant === "add"
-      ? "#00ced1"
+      ? "var(--buttons)"
       : variant === "clear-cancel"
-      ? "#ec392f"
+      ? "var(--cancelbuttons)"
       : variant === "save"
-      ? "#2bd42d"
+      ? "var(--savebuttons)"
       : "inherit"};
   max-width: ${({ variant }) =>
-    variant === "save" || "cancel" ? "10rem" : "inherit"};
+    variant === "save" || variant === "cancel" ? "10rem" : "inherit"};
 
   bottom: ${({ variant }) => (variant === "return" ? "2rem" : "inherit")};
   left: ${({ variant }) => (variant === "return" ? ".5rem" : "inherit")};
   position: ${({ variant }) => (variant === "return" ? "fixed" : "inherit")};
+  min-width: ${({ variant }) => (variant === "counter" ? "inherit" : "3rem")};
 `;

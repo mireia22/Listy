@@ -10,10 +10,11 @@ body {
   min-height: 100vh;
 }
 
-#root {
+:root {
   --background: white;
-  --buttons: #00a88f;
-  --cancelbuttons: #d81e18;
+  --buttons: #0ab59c;
+  --savebuttons: #1fca22d2;
+  --cancelbuttons: #c91a14cf;
   --border: #e77e23;
   --primary: #161f10;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;

@@ -3,9 +3,13 @@ import { useForm } from "react-hook-form";
 import { Button } from "../CustomButton/CustomButton-styles";
 import { Form, FormBtnsWrp } from "./SaveListForm-styles";
 import { useNavigate } from "react-router-dom";
+import { useShoppingList } from "../Context/ShoppingListContext";
+import { v4 as uuidv4 } from "uuid";
 
-const SaveListForm = ({ onCancel, title, shopList, setOpen }) => {
+const SaveListForm = ({ onCancel, title }) => {
   const navigate = useNavigate();
+  const { shopList, setOpen, setSavedLists } = useShoppingList();
+
   const { handleSubmit, register, setValue } = useForm();
   useEffect(() => {
     setValue("title", title);
@@ -13,9 +17,16 @@ const SaveListForm = ({ onCancel, title, shopList, setOpen }) => {
 
   const onSubmit = (formData, e) => {
     e.preventDefault();
-
     localStorage.setItem("listTitle", formData.title);
-    localStorage.setItem("shopList", JSON.stringify(shopList));
+
+    setSavedLists((prevLists) => {
+      const updatedList = [
+        ...prevLists,
+        { id: uuidv4(), listName: formData.title, items: shopList },
+      ];
+      localStorage.setItem("savedLists", JSON.stringify(updatedList));
+      return updatedList;
+    });
 
     navigate("/");
     setOpen(false);
@@ -24,7 +35,11 @@ const SaveListForm = ({ onCancel, title, shopList, setOpen }) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <p>LIST TITLE:</p>
-      <input type="text" {...register("title", { required: true })} />{" "}
+      <input
+        id="title"
+        type="text"
+        {...register("title", { required: true })}
+      />
       <FormBtnsWrp>
         <Button variant="clear-cancel" type="button" onClick={onCancel}>
           🚫

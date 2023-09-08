@@ -14,7 +14,7 @@ export const Form = styled.form`
   > input {
     border: none;
     padding: 0.4rem;
-    border: 2px solid #e77e23;
+    border: 2px solid var(--border);
     border-radius: 5px;
   }
 `;

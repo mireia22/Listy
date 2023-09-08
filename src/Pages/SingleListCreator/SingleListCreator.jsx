@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   SingleListCreatorWrp,
   SingleItemData,
@@ -11,6 +11,7 @@ import Modal from "../../Components/Modal/Modal";
 import SaveListForm from "../../Components/SaveListForm/SaveListForm";
 import { Button } from "../../Components/CustomButton/CustomButton-styles";
 import { useShoppingList } from "../../Components/Context/ShoppingListContext";
+import { useParams } from "react-router-dom";
 
 const SingleListCreator = () => {
   const {
@@ -23,14 +24,26 @@ const SingleListCreator = () => {
     setItemShopped,
     handleItemChange,
     setOpen,
+    savedLists,
     setShopList,
   } = useShoppingList();
 
+  const { listTitle } = useParams();
+
+  useEffect(() => {
+    if (listTitle && savedLists) {
+      const list = savedLists.find((list) => list.listName === listTitle);
+      if (list) {
+        setShopList(list.items);
+      }
+    }
+  }, [listTitle, savedLists, setShopList]);
+
   return (
     <>
-      <h4>Add item: </h4>
       <SingleListCreatorWrp>
         <input
+          placeholder="Add an Item"
           type="text"
           value={itemToShop}
           onChange={(e) => handleItemChange(e.target.value)}
@@ -39,11 +52,20 @@ const SingleListCreator = () => {
           Add
         </Button>
       </SingleListCreatorWrp>
-
       <>
-        <p>Items:</p>
+        {shopList.length > 0 && (
+          <ButtonsWrp>
+            <Button variant="clear-cancel" onClick={clearList}>
+              Clear List
+            </Button>
+            <Button variant="save" onClick={() => setOpen(true)}>
+              Save List
+            </Button>
+          </ButtonsWrp>
+        )}
 
         <ItemList>
+          <p>Items:</p>
           {shopList?.map(({ item, id, isShopped }) => {
             const style = isShopped
               ? {
@@ -56,7 +78,7 @@ const SingleListCreator = () => {
                 style={style}
                 onClick={() => setItemShopped(id)}
               >
-                <p>{item.toUpperCase()}</p>{" "}
+                <p>{item.toUpperCase()}</p>
                 <CountDumpWrp>
                   <Counter />
                   <span onClick={(e) => deleteItem(id, e)}>❌</span>
@@ -64,24 +86,9 @@ const SingleListCreator = () => {
               </SingleItemData>
             );
           })}
-          {shopList.length > 0 ? (
-            <ButtonsWrp>
-              <Button variant="clear-cancel" onClick={clearList}>
-                Clear List
-              </Button>
-              <Button variant="save" onClick={() => setOpen(true)}>
-                Save List
-              </Button>
-            </ButtonsWrp>
-          ) : null}
         </ItemList>
         <Modal open={open}>
-          <SaveListForm
-            onCancel={() => setOpen(false)}
-            shopList={shopList}
-            setShopList={setShopList}
-            setOpen={setOpen}
-          />
+          <SaveListForm onCancel={() => setOpen(false)} />
         </Modal>
       </>
     </>

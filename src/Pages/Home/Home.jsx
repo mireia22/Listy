@@ -1,30 +1,37 @@
-// Home.jsx
-import React, { useEffect, useState } from "react";
-import { HomeWrp, NavContent, ListsWrp } from "./Home-styles";
+import React, { useEffect } from "react";
+import { HomeWrp, NavContent, ListsWrp, PreviewWrp } from "./Home-styles";
 import { Button } from "../../Components/CustomButton/CustomButton-styles";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useShoppingList } from "../../Components/Context/ShoppingListContext";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [listTitle, setListTitle] = useState("");
-  const { setShopList, storedLists, createList } = useShoppingList();
+  const { setShopList, setSavedLists, savedLists } = useShoppingList();
 
   useEffect(() => {
-    const savedListTitle = localStorage.getItem("listTitle");
-    if (savedListTitle) {
-      setListTitle(savedListTitle);
+    const savedListsFromLocalStorage = JSON.parse(
+      localStorage.getItem("savedLists")
+    );
+
+    if (savedListsFromLocalStorage) {
+      setSavedLists(savedListsFromLocalStorage);
     }
   }, []);
 
   const goToSingleListCreator = () => {
-    const confirmDelete = window.confirm(
-      "You're gonna delete your previous list and all its items"
+    setShopList([]);
+    navigate("/shopping-list");
+  };
+
+  const deleteList = (idToDelete) => {
+    setSavedLists((prevLists) =>
+      prevLists.filter((list) => list.id !== idToDelete)
     );
-    if (confirmDelete) {
-      setShopList([]);
-      navigate("/shopping-list");
-    }
+
+    const updatedLists = savedLists.filter((list) => list.id !== idToDelete);
+    localStorage.setItem("savedLists", JSON.stringify(updatedLists));
+    localStorage.removeItem("shopList");
+    localStorage.removeItem("listTitle");
   };
   return (
     <HomeWrp>
@@ -32,18 +39,38 @@ const Home = () => {
       <Button variant="add" onClick={goToSingleListCreator}>
         +
       </Button>
-
-      {listTitle && (
-        <ListsWrp>
-          <p>Your lists:</p>
-          <NavContent>
-            <NavLink to={`/custom-list/${listTitle}`}>
-              <h4>{listTitle.toUpperCase()} ➡️</h4>
+      {savedLists && savedLists.length > 0 && <p>🧺 Your lists:</p>}{" "}
+      <ListsWrp>
+        {savedLists.map((list, index) => (
+          <NavContent
+            key={list.id}
+            backgroundColor={`${
+              [
+                "#a9e5e080",
+                "#ffb3bbaf",
+                "#ffdeb8c8",
+                "#ffffb8",
+                "#c9bae9",
+                "#a7d7e2",
+              ][index]
+            }`}
+          >
+            <NavLink
+              to={`/custom-list/${list.listName}`}
+              state={{ items: list.items }}
+            >
+              <h4>{list.listName.toUpperCase()} ➡️</h4>
             </NavLink>
-            <span>❌</span>
+            <PreviewWrp>
+              <p>Preview:</p>
+              {list.items.map((item) => (
+                <li key={item.id}>{item.item}</li>
+              ))}
+            </PreviewWrp>
+            <span onClick={() => deleteList(list.id)}>❌</span>
           </NavContent>
-        </ListsWrp>
-      )}
+        ))}
+      </ListsWrp>
     </HomeWrp>
   );
 };

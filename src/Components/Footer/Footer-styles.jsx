@@ -5,11 +5,11 @@ export const FooterWrp = styled.footer`
   justify-content: space-between;
   padding: 0.2rem 0.5rem;
   background-color: var(--primary);
-  color: white;
+  color: var(--background);
   align-items: center;
 
   > p {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     letter-spacing: 1px;
   }
 `;

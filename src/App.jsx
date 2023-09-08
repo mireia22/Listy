@@ -1,6 +1,4 @@
-// App.jsx
 import React from "react";
-import { HeaderWrp, MainWrp, AppWrp } from "./App-styles.jsx";
 import {
   Routes,
   Route,
@@ -8,6 +6,7 @@ import {
   useParams,
   useNavigate,
 } from "react-router-dom";
+import { HeaderWrp, MainWrp, AppWrp } from "./App-styles.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import SingleListCreator from "./Pages/SingleListCreator/SingleListCreator.jsx";
 import { ShoppingListProvider } from "./Components/Context/ShoppingListContext.jsx";
@@ -43,7 +42,7 @@ const App = () => {
         </MainWrp>
         {showReturnButton && (
           <Button variant="return" onClick={returnToHome}>
-            ⬅️ Return
+            ⬅️Return
           </Button>
         )}
       </ShoppingListProvider>

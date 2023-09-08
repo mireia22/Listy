@@ -5,7 +5,6 @@ const Counter = () => {
   const [count, setCount] = useState(1);
 
   const incrementCounter = (event) => {
-    //
     event.stopPropagation();
     setCount(count + 1);
   };
@@ -15,7 +14,6 @@ const Counter = () => {
 
     setCount(Math.max(1, count - 1));
   };
-  //COMPROVANT SI EL VALOR PREVI ÉS >1, SI ÉS 1 NO DECREMENTA
   // const decrementCounter = () =>
   //   setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : prevCount));
 

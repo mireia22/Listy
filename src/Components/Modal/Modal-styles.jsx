@@ -10,7 +10,7 @@ export const ModalPopOver = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  background-color: white;
+  background-color: var(--background);
   max-width: 220px;
   max-height: 120px;
   border-radius: 4px;
