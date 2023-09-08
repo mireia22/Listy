@@ -4,10 +4,10 @@ Welcome to Listy, your trusted shopping partner-in-crime! 🚀 Listy isn't just 
 
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; padding: 10px;">
-    <img src="./public/assets/images/icons/listy-home.jpg" alt="homepage" width="300" />
+    <img src="./public/assets/images/icons/listy-home.jpg" alt="homepage" width="200" />
   </div>
   <div style="flex: 1; padding: 10px;">
-    <img src="./public/assets/images/icons/listy-createlist.jpg" alt="create list" width="300" />
+    <img src="./public/assets/images/icons/listy-createlist.jpg" alt="create list" width="200" />
   </div>
 </div>
 
