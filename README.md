@@ -2,8 +2,12 @@
 
 Welcome to Listy, your trusted shopping partner-in-crime! 🚀 Listy isn't just another shopping app; it's your digital shopping ally, meticulously crafted with the power of React. Bid farewell to the days of chaotic, disorganized shopping lists and usher in a new era of shopping efficiency.
 
-![Listy Preview]("./public/assets/images/icons/listy-createlist.jpg)
-![Listy Preview]("./public/assets/images/icons/listy-home.jpg)
+<p align="center">
+  <img src="./public/assets/images/icons/listy-home.jpg" alt="homepage" />
+</p>
+<p align="center">
+  <img src="./public/assets/images/icons/listy-createlist.jpg" alt="create list" />
+</p>
 
 ## ✨ Standout Features of Listy
 
