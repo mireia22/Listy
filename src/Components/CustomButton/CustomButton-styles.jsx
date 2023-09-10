@@ -27,8 +27,4 @@ export const Button = styled.button`
     variant === "counter" || variant === "return" ? "1.2rem" : "inherit"};
   height: ${({ variant }) =>
     variant === "counter" || variant === "return" ? "1.2rem" : "inherit"};
-
-  > img {
-    width: 0.8rem;
-  }
 `;
