@@ -3,8 +3,7 @@ import { styled } from "styled-components";
 export const Button = styled.button`
   border: none;
   cursor: pointer;
-  padding: ${({ variant }) =>
-    variant === "counter" ? "0.25rem 0.5rem" : "0.4rem"};
+  padding: ${({ variant }) => (variant === "counter" ? "0rem" : "0.4rem")};
   border-radius: ${({ variant }) => (variant === "counter" ? "100%" : "5px")};
   color: ${({ variant }) => (variant === "return" ? "black" : "white")};
   font-weight: 500;
@@ -21,8 +20,15 @@ export const Button = styled.button`
   max-width: ${({ variant }) =>
     variant === "save" || variant === "cancel" ? "10rem" : "inherit"};
 
-  bottom: ${({ variant }) => (variant === "return" ? "2rem" : "inherit")};
+  bottom: ${({ variant }) => (variant === "return" ? "3rem" : "inherit")};
   left: ${({ variant }) => (variant === "return" ? ".5rem" : "inherit")};
   position: ${({ variant }) => (variant === "return" ? "fixed" : "inherit")};
-  min-width: ${({ variant }) => (variant === "counter" ? "inherit" : "3rem")};
+  width: ${({ variant }) =>
+    variant === "counter" || variant === "return" ? "1.2rem" : "inherit"};
+  height: ${({ variant }) =>
+    variant === "counter" || variant === "return" ? "1.2rem" : "inherit"};
+
+  > img {
+    width: 0.8rem;
+  }
 `;

@@ -42,10 +42,10 @@ const SaveListForm = ({ onCancel, title }) => {
       />
       <FormBtnsWrp>
         <Button variant="clear-cancel" type="button" onClick={onCancel}>
-          🚫
+          <img src="/assets/images/icons/prohibicion.png" alt="cancel" />
         </Button>
         <Button variant="save" type="submit">
-          ✅
+          <img src="/assets/images/icons/controlar.png" alt="cancel" />
         </Button>
       </FormBtnsWrp>
     </Form>

@@ -33,7 +33,7 @@ const App = () => {
   return (
     <AppWrp>
       <HeaderWrp>
-        <h1>Listy 🛒</h1>
+        <h1>Listy</h1>
       </HeaderWrp>
       <ShoppingListProvider>
         <MainWrp>

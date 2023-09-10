@@ -53,6 +53,8 @@ export const SingleItemData = styled.div`
   padding: 0.4rem;
   border-radius: 5px;
 
+  align-items: center;
+
   @media screen and (width > 400px) {
     width: 21rem;
   }

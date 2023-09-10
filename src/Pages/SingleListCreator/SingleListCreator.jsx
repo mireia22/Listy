@@ -63,11 +63,11 @@ const SingleListCreator = () => {
       <>
         {shopList.length > 0 && (
           <ButtonsWrp>
-            <Button variant="clear-cancel" onClick={clearList}>
-              Clear List
-            </Button>
             <Button variant="save" onClick={() => setOpen(true)}>
               Save List
+            </Button>
+            <Button variant="clear-cancel" onClick={clearList}>
+              Clear List
             </Button>
           </ButtonsWrp>
         )}

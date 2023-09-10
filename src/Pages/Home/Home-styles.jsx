@@ -14,7 +14,7 @@ export const ListsWrp = styled.section`
 `;
 export const NavContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: 1.3fr 1fr auto;
   padding: 0.5rem;
   align-items: center;
   width: 20rem;
@@ -24,9 +24,10 @@ export const NavContent = styled.div`
   background-color: ${({ backgroundColor }) => backgroundColor || "inherit"};
 
   > a {
+    justify-content: flex-start;
     > h4 {
       color: var(--primary);
-      text-align: center;
+      text-align: start;
     }
   }
 `;
