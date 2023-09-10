@@ -41,10 +41,11 @@ const SaveListForm = ({ onCancel, title }) => {
         {...register("title", { required: true })}
       />
       <FormBtnsWrp>
-        <Button variant="clear-cancel" type="button" onClick={onCancel}>
+        <Button variant="save" type="submit">
           ✅
         </Button>
-        <Button variant="save" type="submit">
+
+        <Button variant="clear-cancel" type="button" onClick={onCancel}>
           🚫
         </Button>
       </FormBtnsWrp>
